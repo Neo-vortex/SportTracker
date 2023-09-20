@@ -4,8 +4,6 @@ namespace SportTracker.Models;
 
 public class SignupModel
 {
-
-    [Required]  public string Name { get; set; }
     
     [Required] public string FirstName { get; set; }
 
@@ -21,11 +19,11 @@ public class SignupModel
 
     [Required] public string Gender { get; set; }
 
-    [Required] public double Weight { get; set; }
+    [Required] public decimal Weight { get; set; }
 
     [Required] public int Age { get; set; }
 
-    [Required] public int Height { get; set; }
+    [Required] public decimal Height { get; set; }
     
-    [Required] [DataType(DataType.Password)] public string Password { get; set; }
+    [DataType(DataType.Password)] public string? Password { get; set; }
 }

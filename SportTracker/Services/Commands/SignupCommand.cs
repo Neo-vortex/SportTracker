@@ -4,7 +4,7 @@ using SportTracker.Models.Types;
 
 namespace SportTracker.Services.Commands;
 
-public class SignupCommand : IRequest<RequestResult<bool>>
+public class SignupCommand : IRequest<RequestResult<string>>
 {
     public SignupCommand(SignupModel signupModel)
     {

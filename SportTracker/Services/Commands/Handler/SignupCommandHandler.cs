@@ -5,7 +5,7 @@ using SportTracker.Models.Types;
 
 namespace SportTracker.Services.Commands.Handler;
 
-public class SignupCommandHandler : IRequestHandler<SignupCommand, RequestResult<bool>>
+public class SignupCommandHandler : IRequestHandler<SignupCommand, RequestResult<string>>
 {
     private readonly ApplicationDbContext _applicationDbContext;
     private readonly UserManager<ApplicationUser> _userManager;
@@ -16,7 +16,7 @@ public class SignupCommandHandler : IRequestHandler<SignupCommand, RequestResult
         _userManager = userManager;
     }
 
-    public async Task<RequestResult<bool>> Handle(SignupCommand request, CancellationToken cancellationToken)
+    public async Task<RequestResult<string>> Handle(SignupCommand request, CancellationToken cancellationToken)
     {
         try
         {
@@ -49,11 +49,11 @@ public class SignupCommandHandler : IRequestHandler<SignupCommand, RequestResult
                                              result.Errors.Select(err => err.Description)));
 
                 await _applicationDbContext.SaveChangesAsync(cancellationToken);
-                return result.Succeeded;
+                return user.Id;
             }
-            catch (Exception e)
+            catch
             {
-                return e;
+                return new Exception("your email or phone number is already in use");
             }
         }
         catch (Exception e)

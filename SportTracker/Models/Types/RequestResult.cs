@@ -2,6 +2,7 @@ using OneOf;
 
 namespace SportTracker.Models.Types;
 
+
 [GenerateOneOf]
 public sealed partial class RequestResult<T> : OneOfBase<T, Exception>
 {
