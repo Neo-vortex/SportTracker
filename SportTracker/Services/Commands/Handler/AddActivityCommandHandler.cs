@@ -30,7 +30,6 @@ public class AddActivityCommandHandler : IRequestHandler<AddActivityCommand , Re
             {
                 Calories = request.UserActivityDto.Calories,
                 Count = request.UserActivityDto.Count,
-                Gid = request.UserActivityDto.Gid,
                 Score = request.UserActivityDto.Score,
                 DurationMs = request.UserActivityDto.DurationMs,
                 User = user

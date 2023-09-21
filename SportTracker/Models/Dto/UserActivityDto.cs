@@ -5,8 +5,6 @@ namespace SportTracker.Models.Dto;
 public class UserActivityDto
 {
     
-    [Required]
-    public int Gid { get; set; }
     
     [Required]
     public int Count { get; set; }
@@ -24,7 +22,6 @@ public class UserActivityDto
     {
         return new UserActivity
         {
-            Gid = Gid,
             Count = Count,
             DurationMs = DurationMs,
             Calories = Calories,
