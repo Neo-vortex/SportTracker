@@ -127,7 +127,7 @@ app.UseStaticFiles(new StaticFileOptions
     {
         if (context.Context.User.Identity is { IsAuthenticated: false } && context.Context.Request.Path.StartsWithSegments("/profilePicture"))
         {
-            // show access denied message
+            /*// show access denied message
             context.Context.Response.StatusCode = 401;
             context.Context.Response.ContentType = "text/plain";
             //write a long interesting and funny message about why you can't see the image,
@@ -136,7 +136,7 @@ app.UseStaticFiles(new StaticFileOptions
                 "Looks like you're ahead of the game!" +
                 "To unlock these mysteries, you must first authenticate. Return to the login page and " +
                 "show them who's the real detective. " +
-                "In the meantime, we tip our hats to your sneaky skills!");
+                "In the meantime, we tip our hats to your sneaky skills!");*/
         }
     },
     FileProvider = new PhysicalFileProvider(
