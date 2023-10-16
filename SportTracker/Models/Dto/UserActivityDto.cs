@@ -18,6 +18,8 @@ public class UserActivityDto
     [Required]
     public int Score { get; set; }
 
+    public int Gid { get; set; }
+
     public UserActivity ToUserActivity()
     {
         return new UserActivity
