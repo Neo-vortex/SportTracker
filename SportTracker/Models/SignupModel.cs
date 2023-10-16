@@ -26,4 +26,7 @@ public class SignupModel
     [Required] public decimal Height { get; set; }
     
     [DataType(DataType.Password)] public string? Password { get; set; }
+    
+    
+    [Required]  public string? SpringType { get; set; }
 }

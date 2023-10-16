@@ -38,7 +38,9 @@ public class SignupCommandHandler : IRequestHandler<SignupCommand, RequestResult
                     Weight = request.SignupModel.Weight,
                     FirstName = request.SignupModel.FirstName,
                     LastName = request.SignupModel.LastName,
-                    UserType = "normal"
+                    UserType = "normal",
+                    SpringType = request.SignupModel.SpringType,
+                    CreatedAt = DateTime.UtcNow
                 };
 
                 var result =

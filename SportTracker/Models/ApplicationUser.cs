@@ -19,5 +19,10 @@ public class ApplicationUser : IdentityUser
     
     public string UserType { get; set; }
     
-
+    
+    public DateTime CreatedAt { get; set; }
+    public string? ProfilePictureUrl { get; set; }
+    
+    public string? SpringType { get; set; }
+    
 }

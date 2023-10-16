@@ -13,7 +13,7 @@ using SportTracker.Services.Queries;
 
 namespace SportTracker.Controllers.Profile
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize]
     public class ProfileController : ControllerBase
@@ -72,6 +72,31 @@ namespace SportTracker.Controllers.Profile
             }
          
         }
-        
+
+
+        [HttpPost]
+        [Authorize]
+        [RequestSizeLimit(2 * 1024 * 1024)]
+        public async Task<IActionResult> UploadProfilePicture(  IFormFile file)
+        {
+            var userId = HttpContext.User?.Claims.SingleOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var validData = Utilities.Utilities.IsImage(file);
+            if (!validData)
+            {
+                return BadRequest("invalid file format, not an image");
+            }
+            var result = await _mediator.Send(new UploadProfilePictureCommand(userId, file));
+
+            var url =
+                $"{Request.Scheme}://{Request.Host}/profilePicture/{result.ActualValue}";
+            
+            return Ok(url);
+        }
+       
     }
 }

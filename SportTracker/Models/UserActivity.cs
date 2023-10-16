@@ -17,4 +17,5 @@ public class UserActivity
     
     [JsonIgnore]    
     public ApplicationUser User { get; set; }
+    public DateTime CreatedAt { get; set; }
 }
