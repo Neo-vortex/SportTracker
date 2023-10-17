@@ -33,7 +33,6 @@ public class AddActivityCommandHandler : IRequestHandler<AddActivityCommand , Re
                 Score = request.UserActivityDto.Score,
                 DurationMs = request.UserActivityDto.DurationMs,
                 User = user,
-                Gid = request.UserActivityDto.Gid,
                 CreatedAt = DateTime.UtcNow
             };
             var result = await _applicationDbContext.UserActivities.AddAsync(activity, cancellationToken);
